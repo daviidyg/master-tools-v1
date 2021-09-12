@@ -29,7 +29,7 @@ app.post("/api/login", (req, res) => {
 
     if(account) {
         //Generating access token
-        const token = jwt.sign({id:account.id, isAdmin: account.isAdmin}, "testingkey");
+        const token = jwt.sign({id:account.id, isAdmin: account.isAdmin}, "testingkey", {expiresIn: "300"});
         res.json({
             username: account.username,
             isAdmin: account.isAdmin,
