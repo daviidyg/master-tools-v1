@@ -5,7 +5,7 @@ export const AppComponent = () => {
 
     return (
         <>
-            <p>olla</p>
+            <img src="images/bg-image.jpeg" style={{height: "100vh", width: "100%", overflowY: "auto"}}/>
         </>
     );
 }
