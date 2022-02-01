@@ -1,11 +1,11 @@
 import React from "react";
-
+import {Weather} from "@seed/components";
 
 export const AppComponent = () => {
 
     return (
         <>
-            <p>olla</p>
+            <Weather />
         </>
     );
 }
