@@ -1,37 +1,31 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CardInfo} from "@seed/core/models/card-info";
 import {RootState} from "@seed/core/store";
+import {TodoListItem} from "@seed/core/models/todo-list-item";
 
 export interface AppBaseState {
-    models: CardInfo[];
+    todoListItem: TodoListItem[];
+    todoListItemSet: TodoListItem;
 }
 
 const initialState: AppBaseState = {
-    models: []
+    todoListItem: [],
+    todoListItemSet: null
 };
 
 export const slice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        modelsSet: (state: AppBaseState, action: PayloadAction<CardInfo[]>) => {
-            state.models = action.payload
+        modelsSet: (state: AppBaseState, action: PayloadAction<TodoListItem>) => {
+            state.todoListItem = [state.todoListItem, ...action.payload]
         },
-        modelDeleted: (state: AppBaseState, action: PayloadAction<number>) => {
-            state.models.splice(state.models.findIndex(model => model.id !== action.payload),1)
-        },
-        modelAdd: (state: AppBaseState, action: PayloadAction<CardInfo>) => {
-            state.models = [...state.models, action.payload];
-        }
     }
 })
 
 export default slice.reducer;
 
 export const {
-    modelsSet,
-    modelDeleted,
-    modelAdd
+    modelsSet
 } = slice.actions;
 
-export const modelsSelector = (state: RootState) => state.app.models;
+export const todoListSelector = (state: RootState) => state.app.todoListItem;

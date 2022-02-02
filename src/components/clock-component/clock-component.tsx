@@ -14,6 +14,9 @@ export const ClockComponent = () => {
     
 
     return (
-        <h1 className="text-light position-absolute " style={{right: "5%", top: "10%", fontSize: "10vh"}}>{time.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</h1>
+        <h1 className="text-light position-absolute "
+            style={{right: "5%", top: "10%", fontSize: "10vh"}}>
+            {time.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}
+        </h1>
     );
 }
