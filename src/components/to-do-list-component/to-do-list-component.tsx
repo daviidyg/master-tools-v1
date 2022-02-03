@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, ListGroup, ListGroupItem} from "react-bootstrap";
+import {Button, Col, FormControl, FormGroup, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {modelsSet, todoListSelector} from "@seed/core/store/slices/app.slice";
 
@@ -15,22 +15,33 @@ export const ToDoListComponent = () => {
 
     return (
         <>
-            <input placeholder="Write some shit"
-                   onChange={(ev) => setItem(ev.target.value)}
-            />
-            <Button variant={"primary"}
-                    onClick={
-                        () => onSaveItem()
-                    }>
-                Add new item
-            </Button>
-            <ListGroup>
-                {todoListItems.map(({name, id}) => (
-                    <ListGroupItem key={id}>
-                        {name}
-                    </ListGroupItem>
-                ))}
-            </ListGroup>
+            <Col sm={12} md={12} className="mt-3">
+                <Row>
+                    <Col sm={12} md={4}>
+                        <FormGroup>
+                            <FormControl type={"text"}
+                                         placeholder="Write some shit"
+                                         onChange={(ev) => setItem(ev.target.value)}
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col sm={12} md={3}>
+                        <Button variant={"primary"}
+                                onClick={
+                                    () => onSaveItem()
+                                }>
+                            Add new item
+                        </Button>
+                    </Col>
+                </Row>
+                <ListGroup>
+                    {todoListItems.map(({name, id}) => (
+                        <ListGroupItem key={id}>
+                            {name}
+                        </ListGroupItem>
+                    ))}
+                </ListGroup>
+            </Col>
         </>
     );
 }
