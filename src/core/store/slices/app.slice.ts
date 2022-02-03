@@ -4,12 +4,10 @@ import {TodoListItem} from "@seed/core/models/todo-list-item";
 
 export interface AppBaseState {
     todoListItem: TodoListItem[];
-    todoListItemSet: TodoListItem;
 }
 
 const initialState: AppBaseState = {
     todoListItem: [],
-    todoListItemSet: null
 };
 
 export const slice = createSlice({
@@ -17,7 +15,8 @@ export const slice = createSlice({
     initialState,
     reducers: {
         modelsSet: (state: AppBaseState, action: PayloadAction<TodoListItem>) => {
-            state.todoListItem = [state.todoListItem, ...action.payload]
+            console.log(action.payload);
+            state.todoListItem = [...state.todoListItem, action.payload]
         },
     }
 })
